@@ -1,0 +1,64 @@
+* {
+    font-family: 'Arial', sans-serif;  /* Nastaví písmo na Arial */
+
+}
+
+body {
+    background: #f0f0f0;  /* Nastaví barvu pozadí na světle šedou */}
+body h1 {
+text-align: center;
+color: #009999;
+
+}
+
+.btn-default {
+    width: max-content;  /* Nastaví šířku tlačítka */
+    height: max-content;  /* Nastaví výšku tlačítka */
+    display: flex;  /* Vytvoří flex kontejner */
+    justify-content: center;  /* Zarovná obsah na střed horizontálně */
+    align-items: center;  /* Zarovná obsah na střed vertikálně */
+    border-radius: 2rem;  /* Zaoblení rohů */
+    margin: 1rem;
+    padding: 1rem;  /* Vnitřní odsazení */
+}
+.btn:hover {
+background: #009999;
+border: 0.1rem dashed #ffffff;
+color: white;
+}
+.registration-form {
+    border: 0.1rem solid #009999;  /* Nastaví barvu ohraničení na černou */
+    border-radius: 5px;  /* Zaoblení rohů */
+    padding: 10px;  /* Vnitřní odsazení */
+    margin: 10px;  /* Vnější odsazení */
+    background-color: #009999;  /* Barva pozadí */
+    }
+input::placeholder {
+    font-style: italic;  /* Nastaví kurzívu pro placeholder */
+}
+label {
+    color: white;  /* Barva textu */
+    }
+
+.action-buttons input {
+background: white;
+color: #009999;
+}
+.action-buttons input:hover {
+background: #009999;
+border: 0.1rem dashed #ffffff;
+color: white;
+}
+
+.btn {
+    background: #009999;
+    color: white;
+    border: 0.1rem solid #009999;
+    border-radius: 2rem;
+    margin: 1rem;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.3s;
+}
