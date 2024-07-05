@@ -18,13 +18,13 @@
                 <div class="form-group col-2 offset-4">
                     <label id="firstName"><strong>Jméno:</strong></label>
                     <input type="text" th:field="*{firstName}" class="form-control" name="firstName"
-                           placeholder="Petr" pattern="^([a-zA-Z]+)$" maxlength="12" required>
+                           placeholder="Petr" required>
 
                 </div>
                 <div class="form-group col-2">
                     <label id="lastName"><strong>Jméno:</strong></label>
                     <input type="text" th:field="*{lastName}" class="form-control" name="lastName"
-                           placeholder="Novák" pattern="^([a-zA-Z]+)$" maxlength="24" required>
+                           placeholder="Novák" required>
                 </div>
             </div>
             <div class="row m-auto">
@@ -38,7 +38,6 @@
                     <label id="email"><strong>Email</strong></label>
                     <input type="email" th:field="*{email}" class="form-control" name="email"
                            placeholder="petr.novak@gmail.com"
-                           pattern="^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$"
                            required>
 
                 </div>
@@ -54,19 +53,60 @@
                     </select>
 
                 </div>
+
                 <div class="form-group col-2 offset-1">
                     <label id="phoneNumber"><strong>Telefonní číslo:</strong></label>
                     <input type="text" th:field="*{phoneNumber}" class="form-control" name="phoneNumber"
-                           placeholder="111222333" pattern="\d{9}"
-                           title="Nesprávný formát, číslo se musí skládat z 9 číslic" required>
+                           placeholder="111222333" required>
 
+                </div>
+            </div>
+            <div class="row m-auto">
+                <div class="form-group col-2 offset-4">
+                    <label id="country"><strong>Země:</strong></label>
+                    <select th:field="*{country}" class="form-control" name="country" required>
+                        <option th:value="Česko">Česko</option>
+                        <option th:value="Slovensko">Slovensko</option>
+                        <option th:value="Německo">Německo</option>
+                        <option th:value="Polsko">Polsko</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-2">
+                    <label id="city"><strong>Město/Obec:</strong></label>
+                    <input type="text" th:field="*{city}" class="form-control" name="city"
+                           placeholder="Praha/Brno/..." required>
+                </div>
+                </div>
+            <div class="row m-auto">
+                <div class="form-group col-2 offset-4">
+                    <label id="street"><strong>Ulice:</strong></label>
+                    <input type="text" th:field="*{street}" class="form-control" name="street"
+                           placeholder="Vodičkova" required>
+                </div>
+                <div class="form-group col-2">
+                    <label id="postCode"><strong>PSČ:</strong></label>
+                    <input type="number" th:field="*{postCode}" class="form-control" name="postCode"
+                           placeholder="26043" required>
+                </div>
+                </div>
+            <div class="row m-auto">
+            <div class="form-group col-2 offset-4">
+                <label id="describtionNumber"><strong>č.p.:</strong></label>
+                <input type="number" th:field="*{describtionNnumber}" class="form-control" name="describtionNumber"
+                       placeholder="1594" required>
+            </div>
+                <div class="form-group col-2">
+                    <label id="orientationNumber"><strong>č.o.:</strong></label>
+                    <input type="number" th:field="*{orientationNumber}" class="form-control" name="orientationNumber"
+                           placeholder="33" required>
                 </div>
             </div>
             <div class="action-buttons">
                 <input class="btn btn-primary offset-5 btn-sm" type="submit" value="Submit">
                 <input class="btn btn-primary offset-1 btn-sm" type="reset" value="Reset">
             </div>
-        </div>
+
     </form>
     </div>
 </body>
