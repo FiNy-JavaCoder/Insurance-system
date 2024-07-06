@@ -9,43 +9,41 @@
 </head>
 <body>
 
-    <a href="http://localhost:8080/menu" class="btn btn-primary m-1" role="button">Zpět-menu</a>
-    <h1>Registrace nového pojištěnce</h1>
+<a href="http://localhost:8080/menu" class="btn btn-primary m-1" role="button">Zpět-menu</a>
+<h1>Registrace nového pojištěnce</h1>
 <div class="registration-form"> <!-- This line was missing in the original code -->
     <form th:action="@{/register}" th:method="post" th:object="${insuredPerson_DTO}">
         <div class="registration-form">
             <div class="row m-auto">
                 <div class="form-group col-2 offset-4">
-                    <label id="firstName"><strong>Jméno:</strong></label>
-                    <input type="text" th:field="*{firstName}" class="form-control" name="firstName"
-                           placeholder="Petr" required>
+                    <label class="control-lable" for="firstName"><strong>Jméno:</strong></label>
+                    <textarea th:field="*{firstName}" class="form-control" id="firstName"
+                              placeholder="Petr"></textarea>
 
                 </div>
                 <div class="form-group col-2">
-                    <label id="lastName"><strong>Jméno:</strong></label>
-                    <input type="text" th:field="*{lastName}" class="form-control" name="lastName"
-                           placeholder="Novák" required>
+                    <label class="control-lable" for="lastName"><strong>Příjmení:</strong></label>
+                    <textarea id="lastName" th:field="*{lastName}" class="form-control"
+                              placeholder="Novák"></textarea>
                 </div>
             </div>
             <div class="row m-auto">
                 <div class="form-group col-2 offset-4">
-                    <label id="birthDate"><strong>Datum narození:</strong></label>
-                    <input type="date" th:field="*{birthDate}" class="form-control" name="birthDate"
-                           required>
+                    <label class="control-lable" for="birthDate"><strong>Datum narození:</strong></label>
+                    <input type="date" th:field="*{birthDate}" class="form-control" id="birthDate">
 
                 </div>
                 <div class="form-group col-2">
-                    <label id="email"><strong>Email</strong></label>
-                    <input type="email" th:field="*{email}" class="form-control" name="email"
-                           placeholder="petr.novak@gmail.com"
-                           required>
+                    <label class="control-lable" for="email"><strong>Email</strong></label>
+                    <textarea th:field="*{email}" class="form-control" id="email"
+                              placeholder="petr.novak@gmail.com"></textarea>
 
                 </div>
             </div>
             <div class="row m-auto">
                 <div class="form-group col-1 offset-4">
-                   <label id="phonePreselection"><strong>Předvolba:</strong></label>
-                    <select th:field="*{phonePreselection}" class="form-control" name="phonePreselection" required>
+                    <label class="control-lable" for="phonePreselection"><strong>Předvolba:</strong></label>
+                    <select th:field="*{phonePreselection}" class="form-control" id="phonePreselection" required>
                         <option th:value="'+420'">+420</option>
                         <option th:value="'+421'">+421</option>
                         <option th:value="'+422'">+422</option>
@@ -55,16 +53,16 @@
                 </div>
 
                 <div class="form-group col-2 offset-1">
-                    <label id="phoneNumber"><strong>Telefonní číslo:</strong></label>
-                    <input type="text" th:field="*{phoneNumber}" class="form-control" name="phoneNumber"
-                           placeholder="111222333" required>
+                    <label class="control-lable" for="phoneNumber"><strong>Telefonní číslo:</strong></label>
+                    <textarea th:field="*{phoneNumber}" class="form-control" id="phoneNumber"
+                              placeholder="111222333"></textarea>
 
                 </div>
             </div>
             <div class="row m-auto">
                 <div class="form-group col-2 offset-4">
-                    <label id="country"><strong>Země:</strong></label>
-                    <select th:field="*{country}" class="form-control" name="country" required>
+                    <label class="control-lable" for="country"><strong>Země:</strong></label>
+                    <select th:field="*{country}" class="form-control" id="country">
                         <option th:value="Česko">Česko</option>
                         <option th:value="Slovensko">Slovensko</option>
                         <option th:value="Německo">Německo</option>
@@ -73,41 +71,42 @@
                 </div>
 
                 <div class="form-group col-2">
-                    <label id="city"><strong>Město/Obec:</strong></label>
-                    <input type="text" th:field="*{city}" class="form-control" name="city"
-                           placeholder="Praha/Brno/..." required>
+                    <label class="control-lable" for="city"><strong>Město/Obec:</strong></label>
+                    <textarea th:field="*{city}" class="form-control" id="city"
+                              placeholder="Praha/Brno/..."></textarea>
                 </div>
-                </div>
+            </div>
             <div class="row m-auto">
                 <div class="form-group col-2 offset-4">
-                    <label id="street"><strong>Ulice:</strong></label>
-                    <input type="text" th:field="*{street}" class="form-control" name="street"
-                           placeholder="Vodičkova" required>
+                    <label class="control-lable" for="street"><strong>Ulice:</strong></label>
+                    <textarea th:field="*{street}" class="form-control" id="street"
+                              placeholder="Vodičkova"></textarea>
                 </div>
                 <div class="form-group col-2">
-                    <label id="postCode"><strong>PSČ:</strong></label>
-                    <input type="number" th:field="*{postCode}" class="form-control" name="postCode"
-                           placeholder="26043" required>
+                    <label class="control-lable" for="postCode"><strong>PSČ:</strong></label>
+                    <textarea th:field="*{postCode}" class="form-control" id="postCode"
+                              placeholder="26043"></textarea>
                 </div>
-                </div>
-            <div class="row m-auto">
-            <div class="form-group col-2 offset-4">
-                <label id="describtionNumber"><strong>č.p.:</strong></label>
-                <input type="number" th:field="*{describtionNnumber}" class="form-control" name="describtionNumber"
-                       placeholder="1594" required>
             </div>
+            <div class="row m-auto">
+                <div class="form-group col-2 offset-4">
+                    <label class="control-lable" for="describtionNumber"><strong>č.p.:</strong></label>
+                    <textarea th:field="*{describtionNnumber}" class="form-control" id="describtionNumber"
+                              placeholder="1594"></textarea>
+                </div>
                 <div class="form-group col-2">
-                    <label id="orientationNumber"><strong>č.o.:</strong></label>
-                    <input type="number" th:field="*{orientationNumber}" class="form-control" name="orientationNumber"
-                           placeholder="33" required>
+                    <label class="control-lable" for="orientationNumber"><strong>č.o.:</strong></label>
+                    <textarea class="form-control" th:field="*{orientationNumber}" id="orientationNumber"
+                              placeholder="22"></textarea>
                 </div>
             </div>
             <div class="action-buttons">
                 <input class="btn btn-primary offset-5 btn-sm" type="submit" value="Submit">
                 <input class="btn btn-primary offset-1 btn-sm" type="reset" value="Reset">
             </div>
+        </div>
 
     </form>
-    </div>
+</div>
 </body>
 </html>
