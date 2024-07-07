@@ -12,12 +12,12 @@
 <a href="http://localhost:8080/menu" class="btn btn-primary m-1" role="button">Zpět-menu</a>
 <h1>Registrace nového pojištěnce</h1>
 <div class="registration-form"> <!-- This line was missing in the original code -->
-    <form th:action="@{/register}" th:method="post" th:object="${insuredPerson_DTO}">
+    <form th:action="@{/manager/register}" th:method="post" th:object="${insuredPersonDTO}">
         <div class="registration-form">
             <div class="row m-auto">
                 <div class="form-group col-2 offset-4">
                     <label class="control-lable" for="firstName"><strong>Jméno:</strong></label>
-                    <textarea th:field="*{firstName}" class="form-control" id="firstName"
+                    <textarea id="firstName" th:field="*{firstName}" class="form-control"
                               placeholder="Petr"></textarea>
 
                 </div>
@@ -35,7 +35,7 @@
                 </div>
                 <div class="form-group col-2">
                     <label class="control-lable" for="email"><strong>Email</strong></label>
-                    <textarea th:field="*{email}" class="form-control" id="email"
+                    <textarea id="email" th:field="*{email}" class="form-control"
                               placeholder="petr.novak@gmail.com"></textarea>
 
                 </div>
@@ -43,7 +43,7 @@
             <div class="row m-auto">
                 <div class="form-group col-1 offset-4">
                     <label class="control-lable" for="phonePreselection"><strong>Předvolba:</strong></label>
-                    <select th:field="*{phonePreselection}" class="form-control" id="phonePreselection" required>
+                    <select id="phonePreselection" th:field="*{phonePreselection}" class="form-control">
                         <option th:value="'+420'">+420</option>
                         <option th:value="'+421'">+421</option>
                         <option th:value="'+422'">+422</option>
@@ -54,7 +54,7 @@
 
                 <div class="form-group col-2 offset-1">
                     <label class="control-lable" for="phoneNumber"><strong>Telefonní číslo:</strong></label>
-                    <textarea th:field="*{phoneNumber}" class="form-control" id="phoneNumber"
+                    <textarea id="phoneNumber" th:field="*{phoneNumber}" class="form-control"
                               placeholder="111222333"></textarea>
 
                 </div>
@@ -62,7 +62,7 @@
             <div class="row m-auto">
                 <div class="form-group col-2 offset-4">
                     <label class="control-lable" for="country"><strong>Země:</strong></label>
-                    <select th:field="*{country}" class="form-control" id="country">
+                    <select id="country" th:field="*{country}" class="form-control">
                         <option th:value="Česko">Česko</option>
                         <option th:value="Slovensko">Slovensko</option>
                         <option th:value="Německo">Německo</option>
@@ -72,31 +72,31 @@
 
                 <div class="form-group col-2">
                     <label class="control-lable" for="city"><strong>Město/Obec:</strong></label>
-                    <textarea th:field="*{city}" class="form-control" id="city"
+                    <textarea id="city" th:field="*{city}" class="form-control"
                               placeholder="Praha/Brno/..."></textarea>
                 </div>
             </div>
             <div class="row m-auto">
                 <div class="form-group col-2 offset-4">
                     <label class="control-lable" for="street"><strong>Ulice:</strong></label>
-                    <textarea th:field="*{street}" class="form-control" id="street"
+                    <textarea id="street" th:field="*{street}" class="form-control"
                               placeholder="Vodičkova"></textarea>
                 </div>
                 <div class="form-group col-2">
                     <label class="control-lable" for="postCode"><strong>PSČ:</strong></label>
-                    <textarea th:field="*{postCode}" class="form-control" id="postCode"
+                    <textarea id="postCode" th:field="*{postCode}" class="form-control"
                               placeholder="26043"></textarea>
                 </div>
             </div>
             <div class="row m-auto">
                 <div class="form-group col-2 offset-4">
-                    <label class="control-lable" for="describtionNumber"><strong>č.p.:</strong></label>
-                    <textarea th:field="*{describtionNnumber}" class="form-control" id="describtionNumber"
+                    <label class="control-lable" for="descriptionNumber"><strong>č.p.:</strong></label>
+                    <textarea id="descriptionNumber" th:field="*{descriptionNumber}" class="form-control"
                               placeholder="1594"></textarea>
                 </div>
                 <div class="form-group col-2">
                     <label class="control-lable" for="orientationNumber"><strong>č.o.:</strong></label>
-                    <textarea class="form-control" th:field="*{orientationNumber}" id="orientationNumber"
+                    <textarea id="orientationNumber" th:field="*{orientationNumber}" class="form-control"
                               placeholder="22"></textarea>
                 </div>
             </div>
