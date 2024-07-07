@@ -17,7 +17,7 @@ public class Home_CONTROLLER {
         return "displaying_insured_people";
     }
 
-    @GetMapping("/menu")
+    @GetMapping("/menux")
     public String displayMenu() {
         return "menu";
     }
