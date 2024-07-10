@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="cs-cz" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>SYSTÉM POJIŠTĚNCŮ</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link th:href="@{./styles.css}" rel="stylesheet"/>
+</head>
+<body>
+<div class="d-flex justify-content-center align-items-start" style="height: 100vh;">
+    <div class="text-center">
+        <h1>Systém pojištěnců</h1>
+        <div class="d-flex justify-content-center m-2">
+            <a href="http://localhost:8080/add" class="btn btn-primary" role="button">Přidat pojištěnce</a>
+            <a href="http://localhost:8080/display" class="btn btn-primary" role="button">Zobrazit všechny pojištěnce</a>
+            <a href="http://localhost:8080/filter" class="btn btn-primary" role="button">Vyhledat pojištěnce</a>
+            <a href="http://localhost:8080/shutdown" class="btn btn-primary" role="button">Odhlásit se</a>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
