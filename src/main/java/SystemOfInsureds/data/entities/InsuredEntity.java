@@ -60,13 +60,6 @@ public class InsuredEntity {
         this.orientationNumber = orientationNumber;
     }
 
-    public int getDescriptionNumber() {
-        return descriptionNumber;
-    }
-
-    public void setDescriptionNumber(int descriptionNumber) {
-        this.descriptionNumber = descriptionNumber;
-    }
 
     public String getStreet() {
         return street;
@@ -146,5 +139,13 @@ public class InsuredEntity {
 
     public void setIDinsuredID(Long ID_insured) {
         this.insuredID = ID_insured;
+    }
+
+    public int getDescriptionNumber() {
+        return descriptionNumber;
+    }
+
+    public void setDescriptionNumber(int descriptionNumber) {
+        this.descriptionNumber = descriptionNumber;
     }
 }

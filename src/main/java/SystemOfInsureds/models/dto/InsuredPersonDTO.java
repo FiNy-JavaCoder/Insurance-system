@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 
 public class InsuredPersonDTO {
+    private long insuredID;
     @NotNull(message = "Křestní jméno nesmí být prázdné")
     @NotBlank(message = "Křestní jméno nesmí být prázdné")
     @Size(min = 2, max = 35, message = "Délka křestního jména musí být v rozmezí 2 až 35 znaků")
@@ -42,7 +43,7 @@ public class InsuredPersonDTO {
     @NotBlank(message = "Ulice nesmí být prázdná")
     private String street;
     
-    private int describtionNumber;
+    private int descriptionNumber;
 
     private int orientationNumber;
 
@@ -121,12 +122,12 @@ public class InsuredPersonDTO {
         this.street = street;
     }
 
-    public int getDescribtionNumber() {
-        return describtionNumber;
+    public int getDescriptionNumber() {
+        return descriptionNumber;
     }
 
-    public void setDescribtionNumber(int describtionNumber) {
-        this.describtionNumber = describtionNumber;
+    public void setDescriptionNumber(int descriptionNumber) {
+        this.descriptionNumber = descriptionNumber;
     }
 
     public int getOrientationNumber() {
@@ -145,5 +146,12 @@ public class InsuredPersonDTO {
         this.postCode = postCode;
     }
 
+    public long getInsuredID() {
+        return insuredID;
+    }
+
+    public void setInsuredID(long insuredID) {
+        this.insuredID = insuredID;
+    }
 }
 

@@ -9,4 +9,6 @@ import org.mapstruct.Mapper;
 public interface InsuredMapper {
 
     InsuredEntity toEntity(InsuredPersonDTO source);
+
+    InsuredPersonDTO toDTO(InsuredEntity source);
 }

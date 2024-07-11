@@ -11,33 +11,39 @@
 
 <a href="http://localhost:8080/menu" class="btn btn-primary m-2" role="button">Zpět-menu</a>
 <h1>SEZNAM POJIŠTĚNCŮ</h1>
-<form action="/display" th:object="${listOfInsured_DTO}" method="post">
-    <div class="row">
-        <input class="btn btn-primary col-1 offset-8" type="submit" value="Vyhledat">
-        <a href="http://localhost:8080/add" class="btn btn-primary" role="button">+ Nový</a>
-
-    </div>
-
     <table class="table table-striped table-hover table-bordered table-sm">
         <thead class="bg-dark text-white">
         <tr>
+            <th>Id</th>
             <th>Jméno</th>
             <th>Příjmení</th>
             <th>Datum narození</th>
             <th>Telefonní číslo</th>
             <th>Telefonní předvolba</th>
             <th>Email</th>
+            <th>Země</th>
+            <th>Ulice</th>
+            <th>Město</th>
+            <th>PSČ</th>
+            <th>Číslo popisné</th>
+            <th>Číslo orientační</th>
         </tr>
         </thead>
-        <tr th:each="insuredPerson_DTO : ${insuredList}">
-            <td th:text="${insuredPerson_DTO.firstName}"></td>
-            <td th:text="${insuredPerson_DTO.LastName}"></td>
-            <td th:text="${insuredPerson_DTO.birthDate}"></td>
-            <td th:text="${insuredPerson_DTO.phoneNumber}"></td>
-            <td th:text="${insuredPerson_DTO.phonePreselection}"></td>
-            <td th:text="${insuredPerson_DTO.email}"></td>
+        <tr th:each="insuredPersonDTO : ${insureds}">
+            <td th:text="${insuredPersonDTO.insuredID}"></td>
+            <td th:text="${insuredPersonDTO.firstName}"></td>
+            <td th:text="${insuredPersonDTO.lastName}"></td>
+            <td th:text="${insuredPersonDTO.birthDate}"></td>
+            <td th:text="${insuredPersonDTO.phoneNumber}"></td>
+            <td th:text="${insuredPersonDTO.phonePreselection}"></td>
+            <td th:text="${insuredPersonDTO.email}"></td>
+            <td th:text="${insuredPersonDTO.country}"></td>
+            <td th:text="${insuredPersonDTO.street}"></td>
+            <td th:text="${insuredPersonDTO.city}"></td>
+            <td th:text="${insuredPersonDTO.postCode}"></td>
+            <td th:text="${insuredPersonDTO.descriptionNumber}"></td>
+            <td th:text="${insuredPersonDTO.orientationNumber}"></td>
         </tr>
     </table>
-</form>
 </body>
 </html>
