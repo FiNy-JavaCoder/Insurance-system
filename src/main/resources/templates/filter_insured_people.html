@@ -10,39 +10,100 @@
 <body>
 
 <a href="http://localhost:8080/menu" class="btn btn-primary m-2" role="button">Zpět-menu</a>
-
 <h1>SEZNAM POJIŠTĚNCŮ</h1>
 <div class="row">
     <input class="btn btn-primary col-1 offset-8" type="submit" value="Vyhledat">
-    <a href="http://localhost:8080/add" class="btn btn-primary" role="button">+ Nový</a>
-   <button type="button" class="btn btn-primary col-1">Pojištěných: <strong th:text="${insuredPeople.size}"></strong></button>
+    <a href="http://localhost:8080/manager/register" class="btn btn-primary" role="button">+ Nový</a>
 </div>
+<form th:action="@{/xxfilter}" th:method="post" th:object="${insuredPersonDTOFilter}">
     <table class="table table-striped table-hover table-bordered table-sm">
-    <thead class="bg-dark text-white">
-   <!-- <tr>
-        <form action="/filter" method="post">
-        <td><input type="text" th:field="*{listOfInsured_DTO.searchName}" class="form-control" id="searchName"></td>
-        <td><input type="text" th:field="*{listOfInsured_DTO.searchSurname}" class="form-control" id="serachSurname"></td>
-        <td><input type="date" th:field="*{listOfInsured_DTO.searchBirthDate}" class="form-control" id="searchDateBirth"></td>
-        <td><input type="email" th:field="*{listOfInsured_DTO.searchEmail}" class="form-control" id="searchEmail"></td>
-        <td><input type="text" th:field="*{listOfInsured_DTO.searchPhoneNumber}" class="form-control" id="searchPhoneNumber"></td>
-        </form>
-    </tr> -->
-    <tr>
-        <th>Jméno</th>
-        <th>Příjmení</th>
-        <th>Datum narození</th>
-        <th>Email</th>
-        <th>Telefonní číslo</th>
-    </tr>
-    </thead>
-  <tr th:each="insuredPerson_DTO : ${listOfFiltredInsured}">
-        <td th:text="${insuredPerson_DTO.name}"></td>
-        <td th:text="${insuredPerson_DTO.surname}"></td>
-        <td th:text="${insuredPerson_DTO.birthDate}"></td>
-        <td th:text="${insuredPerson_DTO.email}"></td>
-        <td th:text="${insuredPerson_DTO.phoneNumber}"></td>
-    </tr>
-</table>
+
+        <thead class="bg-dark text-white">
+        <tr>
+            <th>
+                <textarea id="filterInsuredID" th:field="*{filterInsuredID}" class="form-control"
+                          placeholder="ID">
+                </textarea>
+            </th>
+            <th>
+                <textarea id="filterFirstName" th:field="*{filterFirstName}" class="form-control"
+                          placeholder="Jméno">
+                </textarea>
+            </th>
+            <th><textarea id="filterLastName" th:field="*{filterLastName}" class="form-control"
+                          placeholder="Příjmení"></textarea></th>
+            <th><input type="date" id="filterBirthDate" th:field="*{filterBirthDate}" class="form-control"></th>
+            <th>
+                <select id="filterPhonePreselection" th:field="*{filterPhonePreselection}" class="form-control">
+                    <option th:value="'+420'">+420</option>
+                    <option th:value="'+421'">+421</option>
+                    <option th:value="'+422'">+422</option>
+                    <option th:value="'+423'">+423</option>
+                </select>
+            </th>
+            <th>
+                <textarea id="filterPhoneNumber" th:field="*{filterPhoneNumber}" class="form-control"
+                          placeholder="Telefonní číslo">
+                </textarea>
+            </th>
+            <th><textarea id="filterEmail" th:field="*{filterEmail}" class="form-control" placeholder="email"></textarea></th>
+            <th>
+                <textarea id="filterCountry" th:field="*{filterCountry}" class="form-control"
+                          placeholder="Země">
+            </textarea></th>
+            <th>
+                <textarea id="filterStreet" th:field="*{filterStreet}" class="form-control"
+                          placeholder="Ulice">
+                </textarea>
+            </th>
+            <th>
+                <textarea id="filterDescriptionNumber" th:field="*{filterDescriptionNumber}" class="form-control"
+                          placeholder="č.p.">
+                </textarea>
+            </th>
+            <th>
+                <textarea id="filterOrientationNumber" th:field="*{filterOrientationNumber}" class="form-control"
+                          placeholder="o.č.">
+                </textarea>
+            </th>
+            <th><textarea id="filterPostCode" th:field="*{filterPostCode}" class="form-control"
+                          placeholder="PSČ"></textarea></th>
+            <th><textarea id="filterCity" th:field="*{filterCity}" class="form-control"
+                          placeholder="Město"></textarea></th>
+        </tr>
+        <tr>
+            <th>ID</th>
+            <th>Jméno</th>
+            <th>Příjmení</th>
+            <th>Datum narození</th>
+            <th>Telefonní předvolba</th>
+            <th>Telefonní číslo</th>
+            <th>Email</th>
+            <th>Země</th>
+            <th>Ulice</th>
+            <th>č.p.</th>
+            <th>o.č.</th>
+            <th>PSČ</th>
+            <th>Město</th>
+        </tr>
+        </thead>
+        <tr th:each="insuredPerson_DTO : ${all}">
+            <td th:text="${insuredPerson_DTO.insuredID}"></td>
+            <td th:text="${insuredPerson_DTO.firstName}"></td>
+            <td th:text="${insuredPerson_DTO.lastName}"></td>
+            <td th:text="${insuredPerson_DTO.birthDate}"></td>
+            <td th:text="${insuredPerson_DTO.phonePreselection}"></td>
+            <td th:text="${insuredPerson_DTO.phoneNumber}"></td>
+            <td th:text="${insuredPerson_DTO.email}"></td>
+            <td th:text="${insuredPerson_DTO.country}"></td>
+            <td th:text="${insuredPerson_DTO.street}"></td>
+            <td th:text="${insuredPerson_DTO.descriptionNumber}"></td>
+            <td th:text="${insuredPerson_DTO.orientationNumber}"></td>
+            <td th:text="${insuredPerson_DTO.postCode}"></td>
+            <td th:text="${insuredPerson_DTO.city}"></td>
+        </tr>
+    </table>
+    <button type="submit" class="btn btn-primary">Vyhledat</button>
+</form>
 </body>
 </html>

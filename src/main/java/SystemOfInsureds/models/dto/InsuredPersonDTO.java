@@ -49,15 +49,15 @@ public class InsuredPersonDTO {
 
     private int postCode;
 
-    public long getInsuredID() {
-        return insuredID;
+    public long getInsuredId() {
+        return insuredId;
     }
 
-    public void setInsuredID(Long insuredID) {
-        this.insuredID = insuredID;
+    public void setInsuredId(Long insuredId) {
+        this.insuredId = insuredId;
     }
 
-    private long insuredID = -1;
+    private long insuredId;
 
     public @NotNull(message = "Křestní jméno nesmí být prázdné") @NotBlank(message = "Křestní jméno nesmí být prázdné") @Size(min = 2, max = 35, message = "Délka křestního jména musí být v rozmezí 2 až 35 znaků") String getFirstName() {
         return firstName;

@@ -7,7 +7,8 @@ public class InsuredEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long insuredID;
+    @Column(name="insuredid")
+    private Long insuredId;
 
     @Column(nullable = false)
     private String firstName;
@@ -143,12 +144,12 @@ public class InsuredEntity {
         this.firstName = firstName;
     }
 
-    public Long getInsuredID() {
-        return insuredID;
+    public Long getInsuredId() {
+        return insuredId;
     }
 
-    public void setInsuredID(Long insuredID) {
-        this.insuredID = insuredID;
+    public void setInsuredId(Long insuredId) {
+        this.insuredId = insuredId;
     }
 
 

@@ -20,7 +20,7 @@ public class InsuredsServiceImpl implements InsuredsService {
     private InsuredMapper insuredMapper;
 
     @Override
-   public void create(InsuredPersonDTO insuredPersonDTO) {
+    public void create(InsuredPersonDTO insuredPersonDTO) {
         InsuredEntity newInsuredEntity = insuredMapper.toEntity(insuredPersonDTO);
         insuredRepository.save(newInsuredEntity);
     }
@@ -31,4 +31,23 @@ public class InsuredsServiceImpl implements InsuredsService {
                 .map(insuredMapper::toDTO)
                 .toList();
     }
+
+    @Override
+    public InsuredPersonDTO getById(long insuredId) {
+        InsuredEntity fetchedInsuredPerson = getInsuredPersonIdOrThrow(insuredId);
+        return insuredMapper.toDTO(fetchedInsuredPerson);
+    }
+
+    @Override
+    public void edit(InsuredPersonDTO insuredPersonDTO) {
+        InsuredEntity fetchedInsuredPerson = getInsuredPersonIdOrThrow(insuredPersonDTO.getInsuredId());
+
+        insuredMapper.updateInsuredEntity(insuredPersonDTO, fetchedInsuredPerson);
+        insuredRepository.save(fetchedInsuredPerson);
+    }
+
+    private InsuredEntity getInsuredPersonIdOrThrow(long insuredId) {
+        return insuredRepository.findById(insuredId).orElseThrow();
+    }
+
 }

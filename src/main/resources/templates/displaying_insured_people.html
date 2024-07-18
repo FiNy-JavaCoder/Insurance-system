@@ -11,15 +11,68 @@
 
 <a href="http://localhost:8080/menu" class="btn btn-primary m-2" role="button">Zpět-menu</a>
 <h1>SEZNAM POJIŠTĚNCŮ</h1>
-<form action="/display" th:object="${listOfInsured_DTO}" method="post">
+<form action="@{manager/filter}" th:action="@{manager/filter}" method="post">
     <div class="row">
         <input class="btn btn-primary col-1 offset-8" type="submit" value="Vyhledat">
         <a href="http://localhost:8080/manager/register" class="btn btn-primary" role="button">+ Nový</a>
+
 
     </div>
 
     <table class="table table-striped table-hover table-bordered table-sm">
         <thead class="bg-dark text-white">
+        <tr>
+            <th>
+                <input type="text" id="filterInsuredID" name="filterInsuredID" class="form-control" placeholder="ID"/>
+            </th>
+            <th>
+                <input type="text" id="filterFirstName" name="filterFirstName" class="form-control"
+                       placeholder="Jméno"/>
+            </th>
+            <th>
+                <input type="text" id="filterLastName" name="filterLastName" class="form-control"
+                       placeholder="Příjmení"/>
+            </th>
+            <th>
+                <input type="date" id="filterBirthDate" name="filterBirthDate" class="form-control"/>
+            </th>
+            <th>
+                <select id="filterPhonePreselection" name="filterPhonePreselection" class="form-control">
+                    <option value="+420">+420</option>
+                    <option value="+421">+421</option>
+                    <option value="+422">+422</option>
+                    <option value="+423">+423</option>
+                </select>
+            </th>
+            <th>
+                <input type="text" id="filterPhoneNumber" name="filterPhoneNumber" class="form-control"
+                       placeholder="Telefonní číslo"/>
+            </th>
+            <th>
+                <input type="text" id="filterEmail" name="filterEmail" class="form-control" placeholder="email"/>
+            </th>
+            <th>
+                <input type="text" id="filterCountry" name="filterCountry" class="form-control" placeholder="Země"/>
+            </th>
+            <th>
+                <input type="text" id="filterStreet" name="filterStreet" class="form-control" placeholder="Ulice"/>
+            </th>
+            <th>
+                <input type="text" id="filterDescriptionNumber" name="filterDescriptionNumber" class="form-control"
+                       placeholder="č.p."/>
+            </th>
+            <th>
+                <input type="text" id="filterOrientationNumber" name="filterOrientationNumber" class="form-control"
+                       placeholder="o.č."/>
+            </th>
+            <th>
+                <input type="text" id="filterPostCode" name="filterPostCode" class="form-control" placeholder="PSČ"/>
+            </th>
+            <th>
+                <input type="text" id="filterCity" name="filterCity" class="form-control" placeholder="Město"/>
+            </th>
+
+        </tr>
         <tr>
             <th>ID</th>
             <th>Jméno</th>
@@ -37,7 +90,7 @@
         </tr>
         </thead>
         <tr th:each="insuredPerson_DTO : ${all}">
-            <td th:text="${insuredPerson_DTO.insuredID}"></td>
+            <td th:text="${insuredPerson_DTO.insuredId}"></td>
             <td th:text="${insuredPerson_DTO.firstName}"></td>
             <td th:text="${insuredPerson_DTO.lastName}"></td>
             <td th:text="${insuredPerson_DTO.birthDate}"></td>
