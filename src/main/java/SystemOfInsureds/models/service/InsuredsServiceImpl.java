@@ -4,11 +4,11 @@ import SystemOfInsureds.data.repository.InsuredRepository;
 import SystemOfInsureds.data.entities.InsuredEntity;
 import SystemOfInsureds.models.dto.InsuredPersonDTO;
 import SystemOfInsureds.models.dto.mappers.InsuredMapper;
+import SystemOfInsureds.models.exceptions.InsuredNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 
 @Service
 public class InsuredsServiceImpl implements InsuredsService {
@@ -47,7 +47,23 @@ public class InsuredsServiceImpl implements InsuredsService {
     }
 
     private InsuredEntity getInsuredPersonIdOrThrow(long insuredId) {
-        return insuredRepository.findById(insuredId).orElseThrow();
+        return insuredRepository.findById(insuredId)
+                .orElseThrow(() -> new InsuredNotFoundException(insuredId));
     }
 
+    public void remove(long insuredId) {
+        InsuredEntity fetchedEntity = getInsuredPersonIdOrThrow(insuredId);
+        insuredRepository.delete(fetchedEntity);
+    }
+
+    private InsuredEntity getInsuredOrThrow(long insuredId) {
+        return insuredRepository
+                .findById(insuredId)
+                .orElseThrow(() -> new InsuredNotFoundException(insuredId));
+    }
+
+    @Override
+    public boolean existsById(long insuredId) {
+        return insuredRepository.existsById(insuredId);
+    }
 }

@@ -10,8 +10,9 @@
 <body>
 
 <a href="http://localhost:8080/menu" class="btn btn-primary m-1" role="button">Zpět-menu</a>
-<h1>Editace pojištěnce - id:<span th:text="insuredId"></span></h1>
-<div class="registration-form"> <!-- This line was missing in the original code -->
+<h1>ID editovaného pojištěnce: <span th:text="${insuredId}"></span></h1>
+
+<div class="registration-form">
     <form th:action="@{'/manager/edit/' + ${insuredId}}" th:method="post" th:object="${insuredPersonDTO}">
         <div class="registration-form">
             <div class="row m-auto">

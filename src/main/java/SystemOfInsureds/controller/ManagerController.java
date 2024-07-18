@@ -2,13 +2,16 @@ package SystemOfInsureds.controller;
 
 import SystemOfInsureds.models.dto.InsuredPersonDTO;
 import SystemOfInsureds.models.dto.InsuredPersonDTOFilter;
+import SystemOfInsureds.models.exceptions.InsuredNotFoundException;
 import SystemOfInsureds.models.service.InsuredsService;
 import SystemOfInsureds.models.dto.mappers.InsuredMapper;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/manager")
@@ -29,7 +32,7 @@ public class ManagerController {
     public String addInsured(
             @Valid @ModelAttribute InsuredPersonDTO insuredPersonDTO) {
         insureds_Service.create(insuredPersonDTO);
-        return "menu";
+        return "redirect:/manager/display";
     }
 
     @GetMapping("display")
@@ -40,21 +43,39 @@ public class ManagerController {
 
     @GetMapping("edit/{insuredId}")
     public String renderEditForm(
-            @PathVariable Long insuredId, InsuredPersonDTO insuredPersonDTO) {
-
+            @PathVariable("insuredId") Long insuredId, InsuredPersonDTO insuredPersonDTO, RedirectAttributes redirectAttributes) {
         InsuredPersonDTO fetchedInsured = insureds_Service.getById(insuredId);
+
         insuredMapper.updateInsuredPersonDTO(fetchedInsured, insuredPersonDTO);
         return "edit_insured_person";
     }
-/*
     @PostMapping("edit/{insuredId}")
     public String editInsured(
-            @PathVariable long insuredId,
-            @Valid InsuredPersonDTO insuredPersonDTO) {
+            @PathVariable("insuredId") long insuredId,
+            @Valid InsuredPersonDTO insuredPersonDTO, BindingResult result , RedirectAttributes redirectAttributes) {
+        if (result.hasErrors()) {
+            StringBuilder errorMessage = new StringBuilder("Error updating InsuredPerson with ID: " + insuredId + ". ");
+            result.getAllErrors().forEach(error -> errorMessage.append(error.getDefaultMessage()).append(" "));
+            return renderEditForm(insuredId, insuredPersonDTO, redirectAttributes);
+        }
         insuredPersonDTO.setInsuredId(insuredId);
         insureds_Service.edit(insuredPersonDTO);
+        redirectAttributes.addFlashAttribute("successMessage", String.format("Pojištěnec s ID: %d byl aktualizován.", insuredId));
         return "redirect:/manager/display";
     }
-    */
+    @GetMapping("delete/{insuredId}")
+    public String deleteInsured(@PathVariable("insuredId") long insuredId,
+                                RedirectAttributes redirectAttributes) {
+
+        insureds_Service.remove(insuredId);
+        redirectAttributes.addFlashAttribute("infoMessage", String.format("Pojištěnec s ID: %d byl smazán.", insuredId));
+        return "redirect:/manager/display";
+    }
+    @ExceptionHandler({InsuredNotFoundException.class})
+    public String handleInsuredNotFoundException(InsuredNotFoundException ex, RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute("errorMessage", ex.getMessage());
+        return "redirect:/manager/display";
+    }
+
 }
 

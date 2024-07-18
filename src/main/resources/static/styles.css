@@ -34,7 +34,8 @@ color: white;
     background-color: #009999;  /* Barva pozadí */
     }
 input::placeholder {
-    font-style: italic;  /* Nastaví kurzívu pro placeholder */
+    font-style: italic;
+      text-align: center;/* Nastaví kurzívu pro placeholder */
 }
 label {
     color: white;  /* Barva textu */

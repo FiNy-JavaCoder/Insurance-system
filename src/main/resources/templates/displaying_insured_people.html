@@ -9,6 +9,10 @@
 </head>
 <body>
 
+<div class="alert alert-primary text-center" role="alert" th:if="${successMessage}" th:text="${successMessage}"></div>
+<div class="alert alert-danger text-center" role="alert" th:if="${errorMessage}" th:text="${errorMessage}"></div>
+<div class="alert alert-info text-center" role="alert" th:if="${infoMessage}" th:text="${infoMessage}"></div>
+
 <a href="http://localhost:8080/menu" class="btn btn-primary m-2" role="button">Zpět-menu</a>
 <h1>SEZNAM POJIŠTĚNCŮ</h1>
 <form action="@{manager/filter}" th:action="@{manager/filter}" method="post">
@@ -18,7 +22,6 @@
 
 
     </div>
-
     <table class="table table-striped table-hover table-bordered table-sm">
         <thead class="bg-dark text-white">
         <tr>

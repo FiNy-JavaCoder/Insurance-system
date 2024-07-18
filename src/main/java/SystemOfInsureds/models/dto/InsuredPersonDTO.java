@@ -2,6 +2,7 @@ package SystemOfInsureds.models.dto;
 
 
 import jakarta.validation.constraints.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 
@@ -17,6 +18,7 @@ public class InsuredPersonDTO {
     @Size(max = 35, message = "Příjmení je příliš dlouhé")
     private String lastName;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     @PastOrPresent(message = "Datum narození musí být v minulosti")
     private LocalDate birthDate;
 
@@ -75,10 +77,12 @@ public class InsuredPersonDTO {
         this.lastName = lastName;
     }
 
-    public @PastOrPresent(message = "Datum narození musí být v minulosti") LocalDate getBirthDate() {
+    public @PastOrPresent(message = "Datum narození musí být v minulosti")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    LocalDate getBirthDate() {
         return birthDate;
     }
-
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     public void setBirthDate(@PastOrPresent(message = "Datum narození musí být v minulosti") LocalDate birthDate) {
         this.birthDate = birthDate;
     }
