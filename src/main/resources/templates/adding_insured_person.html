@@ -11,7 +11,7 @@
 
 <a href="http://localhost:8080/menu" class="btn btn-primary m-1" role="button">Zpět-menu</a>
 <h1>Registrace nového pojištěnce</h1>
-<div class="registration-form"> <!-- This line was missing in the original code -->
+<div class="registration-form">
     <form th:action="@{/manager/register}" th:method="post" th:object="${insuredPersonDTO}">
         <div class="registration-form">
             <div class="row m-auto">

@@ -1,7 +1,6 @@
 package SystemOfInsureds.controller;
 
 import SystemOfInsureds.models.dto.InsuredPersonDTO;
-import SystemOfInsureds.models.dto.InsuredPersonDTOFilter;
 import SystemOfInsureds.models.exceptions.InsuredNotFoundException;
 import SystemOfInsureds.models.service.InsuredsService;
 import SystemOfInsureds.models.dto.mappers.InsuredMapper;
