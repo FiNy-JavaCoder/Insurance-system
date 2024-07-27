@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="cs-cz" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>SYSTÉM POJIŠTĚNCŮ</title>
+    <link rel="stylesheet" th:href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link th:href="@{./styles.css}" rel="stylesheet"/>
+</head>
+<body>
+<header th:fragment="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center p-3">
+        <ul class="d-flex justify-content-center align-items-center list-unstyled">
+            <p sec:authorize="hasRole('ADMIN')">
+                <li class="m-1"><a th:href="@{/manager/register}" class="btn btn-primary" role="button">Přidat pojištěnce</a></li>
+            </p>
+            <li class="m-1"><a th:href="@{/manager/display}" class="btn btn-primary" role="button">Zobrazit pojištěnce</a></li>
+            <li class="m-1">
+                <form method="post" th:action="@{/account/logOut}">
+                    <button class="btn btn-primary" sec:authorize="isAuthenticated()" type="submit">Odhlásit se</button>
+                </form>
+            </li>
+        </ul>
+    </nav>
+    <a th:href="@{/menu}" class="btn btn-primary m-2" role="button">Zpět-menu</a>
+</header>
+</body>
+<footer class="text-center blockquote-footer" th:fragment="footer">
+        <p>&copy; 2024 - SYSTÉM POJIŠTĚNCŮ</p>
+        <p>by FiNy - JavaCoder</p>
+</footer>
+</html>

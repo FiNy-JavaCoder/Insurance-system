@@ -21,11 +21,5 @@ public class HomeController {
     public String displayMenu() {
         return "menu";
     }
-
-    @GetMapping("/shutdown")
-    public void shutdownApp() {
-
-        System.exit(0);
-    }
 }
 

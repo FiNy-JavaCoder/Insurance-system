@@ -2,38 +2,32 @@ package SystemOfInsureds.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
+@EnableMethodSecurity(securedEnabled = true, jsr250Enabled = true)
 public class ApplicationSecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests()
-                .requestMatchers(
-                        "/manager/register", "/manager/delete/**", "/manager/edit/**", "/manager/display"
-                )
-                .authenticated() // Require authentication for these pages
-                .requestMatchers(
-                        "/menu", "/account/register-user"
-                )
-                .permitAll() // Allow all visitors to access this page
                 .anyRequest()
-                .authenticated()
+                .permitAll() // <-- Všechny stránky povolíme (pravidla budeme definovat přímo v kontroleru)
                 .and()
                 .formLogin()
-                .loginPage("/account/login-user") // Přihlašovací URL adresa
-                .loginProcessingUrl("/account/login-user") // Přihlašovací URL adresa
-                .defaultSuccessUrl("/manager/display", true) // Nastavení přesměrování po úspěšném přihlášení
-                .usernameParameter("email") // Chceme se přihlašovat pomocí emailu
-                .permitAll() // Povolit vstup na `/account/login` i nepřihlášeným uživatelům
+                .loginPage("/account/login-user")
+                .loginProcessingUrl("/account/login-user")
+                .defaultSuccessUrl("/manager/display", true)
+                .usernameParameter("email")
+                .permitAll()
                 .and()
                 .logout()
-                .logoutUrl("/account/logout") // Odhlašovací URL adresa
+                .logoutUrl("/account/logout")
                 .and()
                 .build();
     }

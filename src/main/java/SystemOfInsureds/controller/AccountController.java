@@ -55,5 +55,10 @@ public class AccountController {
         redirectAttributes.addFlashAttribute("success", "Uživatel zaregistrován.");
         return "redirect:/account/login-user";
     }
+@PostMapping ("/account/logOut")
+    public String login(RedirectAttributes redirectAttributes) {
+    redirectAttributes.addFlashAttribute("logOutMessage", "Odhlášení proběhlo úspěšně");
+        return "account/login";
+    }
 
 }

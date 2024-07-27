@@ -6,6 +6,7 @@ import SystemOfInsureds.models.dto.service.InsuredsService;
 import SystemOfInsureds.models.dto.mappers.InsuredMapper;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,11 +23,12 @@ public class ManagerController {
     @Autowired
     private InsuredMapper insuredMapper;
 
+    @Secured("ROLE_ADMIN")
     @GetMapping("register")
     public String renderCreateForm(@ModelAttribute InsuredPersonDTO insuredPersonDTO) {
         return "adding_insured_person";
     }
-
+    @Secured("ROLE_ADMIN")
     @PostMapping("register")
     public String addInsured(
             @Valid @ModelAttribute InsuredPersonDTO insuredPersonDTO) {
@@ -39,7 +41,7 @@ public class ManagerController {
         model.addAttribute("all", insureds_Service.getAllInsureds());
         return "displaying_insured_people";
     }
-
+    @Secured("ROLE_ADMIN")
     @GetMapping("edit/{insuredId}")
     public String renderEditForm(
             @PathVariable("insuredId") Long insuredId, InsuredPersonDTO insuredPersonDTO, RedirectAttributes redirectAttributes) {
@@ -48,6 +50,7 @@ public class ManagerController {
         insuredMapper.updateInsuredPersonDTO(fetchedInsured, insuredPersonDTO);
         return "edit_insured_person";
     }
+    @Secured("ROLE_ADMIN")
     @PostMapping("edit/{insuredId}")
     public String editInsured(
             @PathVariable("insuredId") long insuredId,
@@ -62,6 +65,7 @@ public class ManagerController {
         redirectAttributes.addFlashAttribute("successMessage", String.format("Pojištěnec s ID: %d byl aktualizován.", insuredId));
         return "redirect:/manager/display";
     }
+    @Secured("ROLE_ADMIN")
     @GetMapping("delete/{insuredId}")
     public String deleteInsured(@PathVariable("insuredId") long insuredId,
                                 RedirectAttributes redirectAttributes) {

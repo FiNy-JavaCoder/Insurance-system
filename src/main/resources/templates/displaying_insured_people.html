@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="cs-cz" xmlns:th="http://www.thymeleaf.org">
+<html lang="cs-cz" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -8,19 +8,23 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 <body>
+<header
+        th:replace="fragments/layout :: header">
+</header>
 
 <div class="alert alert-primary text-center" role="alert" th:if="${successMessage}" th:text="${successMessage}"></div>
 <div class="alert alert-danger text-center" role="alert" th:if="${errorMessage}" th:text="${errorMessage}"></div>
 <div class="alert alert-info text-center" role="alert" th:if="${infoMessage}" th:text="${infoMessage}"></div>
 
-<a href="http://localhost:8080/menu" class="btn btn-primary m-2" role="button">Zpět-menu</a>
 <h1>SEZNAM POJIŠTĚNCŮ</h1>
 <form action="@{manager/filter}" th:action="@{manager/filter}" method="post">
+
     <div class="row">
+
         <input class="btn btn-primary col-1 offset-8" type="submit" value="Vyhledat">
+        <p sec:authorize="hasRole('ADMIN')">
         <a href="http://localhost:8080/manager/register" class="btn btn-primary" role="button">+ Nový</a>
-
-
+    </p>
     </div>
     <table class="table table-striped table-hover table-bordered table-sm">
         <thead class="bg-dark text-white">
@@ -109,5 +113,6 @@
         </tr>
     </table>
 </form>
+<footer th:replace="fragments/layout :: footer"></footer>
 </body>
 </html>
