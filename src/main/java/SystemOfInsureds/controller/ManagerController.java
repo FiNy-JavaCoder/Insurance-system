@@ -2,7 +2,7 @@ package SystemOfInsureds.controller;
 
 import SystemOfInsureds.models.dto.InsuredPersonDTO;
 import SystemOfInsureds.models.exceptions.InsuredNotFoundException;
-import SystemOfInsureds.models.service.InsuredsService;
+import SystemOfInsureds.models.dto.service.InsuredsService;
 import SystemOfInsureds.models.dto.mappers.InsuredMapper;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

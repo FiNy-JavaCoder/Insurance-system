@@ -1,4 +1,4 @@
-package SystemOfInsureds.models.service;
+package SystemOfInsureds.models.dto.service;
 
 import SystemOfInsureds.models.dto.InsuredPersonDTO;
 import SystemOfInsureds.models.dto.InsuredPersonDTOFilter;

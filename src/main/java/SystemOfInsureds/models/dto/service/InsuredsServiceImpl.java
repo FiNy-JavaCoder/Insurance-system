@@ -1,4 +1,4 @@
-package SystemOfInsureds.models.service;
+package SystemOfInsureds.models.dto.service;
 
 import SystemOfInsureds.data.repository.InsuredRepository;
 import SystemOfInsureds.data.entities.InsuredEntity;
