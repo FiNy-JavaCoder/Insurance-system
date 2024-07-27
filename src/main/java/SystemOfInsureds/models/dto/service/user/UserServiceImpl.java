@@ -7,6 +7,8 @@ import SystemOfInsureds.models.exceptions.DuplicateEmailException;
 import SystemOfInsureds.models.exceptions.PasswordsDoNotEqualException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -14,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private UserRepository usersRepository;
+    private UserRepository userRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -31,9 +33,14 @@ public class UserServiceImpl implements UserService {
         userEntity.setAdmin(isAdmin);
 
         try {
-            usersRepository.save(userEntity);
+            userRepository.save(userEntity);
         } catch (DataIntegrityViolationException e) {
             throw new DuplicateEmailException();
         }
+    }
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByEmail(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Username, " + username + " not found"));
     }
 }
